@@ -1,73 +1,65 @@
-# React + TypeScript + Vite
+# Stardew Perfection Helper
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A web application that helps Stardew Valley players track their progress toward achieving perfection in the game.
 
-Currently, two official plugins are available:
+## Overview
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Stardew Perfection Helper analyzes your Stardew Valley save file and provides a detailed breakdown of tasks you need to complete to achieve perfection. The application displays tasks with their requirements including:
 
-## React Compiler
+- Seasons when tasks can be completed
+- Locations where tasks can be performed
+- Weather conditions required
+- Time of day requirements
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## Features
 
-## Expanding the ESLint configuration
+- Upload and analyze Stardew Valley save files (XML format)
+- Filter tasks by category
+- View detailed conditions for each task
+- Links to additional information for specific tasks
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+## Technology Stack
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+- **Frontend**: React 19 with TypeScript
+- **Build Tool**: Vite
+- **Testing**: Playwright for end-to-end testing
+- **Backend**: Separate service running on localhost:8080 that analyzes save files
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+## Getting Started
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+### Prerequisites
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+- Node.js (latest LTS version recommended)
+- A local backend server running on port 8080 (see Backend Setup)
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+### Installation
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+1. Clone the repository
+2. Install dependencies:
+   ```
+   npm install
+   ```
+3. Start the development server:
+   ```
+   npm run dev
+   ```
+4. Open your browser and navigate to the local server address shown in your terminal
+
+### Backend Setup
+
+The application requires a backend server running on `http://localhost:8080` with an `/analyze` endpoint that accepts Stardew Valley save files (XML) and returns task data.
+
+## Usage
+
+1. Start the application and ensure the backend server is running
+2. Click the file input button and select your Stardew Valley save file (XML format)
+3. Click "Analyse Save" to process your save file
+4. View your perfection tasks and filter them by category using the buttons at the top
+5. Each task displays its requirements including seasons, locations, weather, and time
+
+## Development
+
+- `npm run dev` - Start the development server
+- `npm run lint` - Run ESLint to check code quality
+- `npm run format` - Format code with Prettier
+- `npm run preview` - Preview the production build locally
