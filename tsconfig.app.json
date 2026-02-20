@@ -10,10 +10,6 @@
 
     /* Path mapping */
     "baseUrl": ".",
-    "paths": {
-      "@shared/*": ["../shared/*"]
-    },
-
 
     /* Bundler mode */
     "moduleResolution": "bundler",

@@ -4,12 +4,13 @@ export class SaveUploadPage {
     readonly page: Page;
     readonly fileInput: Locator;
     readonly statusText: Locator;
+    readonly taskTable: Locator;
 
     constructor(page: Page) {
         this.page = page;
         this.fileInput = page.locator('input[data-testid="file-input"]');
         this.statusText = page.locator('p[data-testid="status-text"]');
-        this.taskList = page.locator('ul[data-testid="task-list"]');
+        this.taskTable = page.locator('tbody[data-testid="task-table-body"]');
     }
 
     async goto() {
@@ -33,8 +34,7 @@ export class SaveUploadPage {
     }
 
     async expectTaskListToExist() {
-        const tasks = this.taskList.locator('li');
-        expect(await tasks.count()).toBeGreaterThan(0);
+        await expect(this.taskTable.locator('tr').first()).toBeVisible();
     }
 }
 

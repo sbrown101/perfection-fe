@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { sendToBackend } from "../api/analysisApi";
-import type { Task } from "@shared/Task";
+import type { Task } from "../types/Task";
 
 interface Props {
   onTasksLoaded: (tasks: Task[]) => void;
@@ -9,7 +9,7 @@ interface Props {
 export function SaveUpload({ onTasksLoaded }: Props) {
     const [status, setStatus] = useState<string>("No file selected");
     const [xmlText, setXmlText] = useState<string | null>(null);
-    const [tasks, setTasks] = useState<Task[]>([]);
+    const [, setTasks] = useState<Task[]>([]);
 
     function handleFile(e: React.ChangeEvent<HTMLInputElement>) {
         const file = e.target.files?.[0];
