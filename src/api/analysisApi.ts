@@ -1,4 +1,4 @@
-import type { Task } from "@shared/Task";
+import type { Task } from "../types/Task";
 
 export async function sendToBackend(xml: string): Promise<Task[]> {
     const res = await fetch("http://localhost:8080/analyze", {

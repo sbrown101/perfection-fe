@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { SaveUpload } from "../components/SaveUpload";
 import { TaskTable } from "../components/TaskTable";
-import type { Task } from "@shared/Task";
+import type { Task } from "../types/Task";
 
 export function PerfectionPage() {
   const [tasks, setTasks] = useState<Task[]>([]);
